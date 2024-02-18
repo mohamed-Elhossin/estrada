@@ -1,0 +1,11 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #000;
+    color: #fff;
+  }#main {
+    margin-top: 60px;
+    padding: 20px 30px;
+    background-color: black;
+    color: white;
+    transition: all 0.3s;
+  }

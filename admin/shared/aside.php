@@ -39,18 +39,51 @@ include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
             </a>
             <ul id="category" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="<?= url('app/developers/list.php')  ?>">
+                    <a href="<?= url('app/developers/add.php')  ?>">
                         <i class="bi bi-circle"></i><span>Add </span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= url('app/developers/add.php')  ?>">
+                    <a href="<?= url('app/developers/list.php')  ?>">
                         <i class="bi bi-circle"></i><span>List</span>
                     </a>
                 </li>
             </ul>
         </li><!-- End Tables Nav -->
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#properties" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>properties</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="properties" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="<?= url('app/properties/add.php')  ?>">
+                        <i class="bi bi-circle"></i><span>Add </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= url('app/properties/list.php')  ?>">
+                        <i class="bi bi-circle"></i><span>List</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Agents" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Agents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Agents" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="<?= url('app/agents/add.php')  ?>">
+                        <i class="bi bi-circle"></i><span>Add </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= url('app/agents/list.php')  ?>">
+                        <i class="bi bi-circle"></i><span>List</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>

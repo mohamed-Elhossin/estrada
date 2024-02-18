@@ -16,9 +16,14 @@ if (isset($_POST['login'])) {
 
   $numRows = mysqli_num_rows($selectRun);
 
-
+  $rowAllData = mysqli_fetch_assoc($selectRun);
   if ($numRows == 1) {
-    $_SESSION['admin'] = $email;
+    $_SESSION['admin'] = [
+      "email" => $email,
+      "id" => $rowAllData['id'],
+      "image" => $rowAllData['image'],
+      "theem" => $rowAllData['theem']
+    ];
     header('location: /estrada/admin/index.php');
   } else {
     // redirect('admins/add.php');
@@ -28,6 +33,7 @@ if (isset($_POST['login'])) {
 if (isset($_GET['logout'])) {
   session_unset();
   session_destroy();
+  redirect2('pages-login.php');
 }
 clearSessionDone();
 print_r($_SESSION);

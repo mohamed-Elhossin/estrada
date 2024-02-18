@@ -27,6 +27,14 @@ window.location.replace('http://localhost/estrada/admin/app/$var')
 </script>";
 }
 
+function redirect2($var)
+{
+
+    echo "<script>
+window.location.replace('http://localhost/estrada/admin/$var')
+</script>";
+}
+
 
 function clearSessionDone()
 {

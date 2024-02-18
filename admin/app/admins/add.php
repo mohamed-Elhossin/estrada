@@ -1,6 +1,6 @@
 <?php
 include_once '../../vendor/functions.php';
-  auth();
+auth();
 include_once '../../shared/head.php';
 include_once '../../shared/header.php';
 include_once '../../shared/aside.php';
@@ -12,7 +12,7 @@ if (isset($_POST['send'])) {
     $email = $_POST['email'];
     $password =  $_POST['password'];
     $hash_password = sha1($password);
-    $insert = "INSERT INTO admins VALUES (null , '$name','$hash_password','$email')";
+    $insert = "INSERT INTO admins VALUES (null , '$name','$hash_password','$email',Default)";
     $mysqli_run = mysqli_query($conn, $insert);
     // header("http://localhost/estrada/admin/app/admins/add.php");
     redirect('admins/add.php');
@@ -50,8 +50,8 @@ clearSessionDone();
                 <div class="col-md-6">
                     <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
-
-
+ 
+      
                 <div class="text-center">
                     <button type="submit" name="send" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>

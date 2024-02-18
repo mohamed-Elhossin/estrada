@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php'; 
+include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@ include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Estrada</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -22,18 +22,23 @@ include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= url("assets/vendor/bootstrap/css/bootstrap.min.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/bootstrap-icons/bootstrap-icons.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/boxicons/css/boxicons.min.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/quill/quill.snow.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/quill/quill.bubble.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/remixicon/remixicon.css")?>" rel="stylesheet">
-  <link href="<?= url("assets/vendor/simple-datatables/style.css")?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/bootstrap-icons/bootstrap-icons.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/boxicons/css/boxicons.min.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/quill/quill.snow.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/quill/quill.bubble.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/remixicon/remixicon.css") ?>" rel="stylesheet">
+  <link href="<?= url("assets/vendor/simple-datatables/style.css") ?>" rel="stylesheet">
 
   <!-- Template Main CSS")?> File -->
-  <link href="<?= url("assets/css/style.css")?>" rel="stylesheet">
-
-
+  <link href="<?= url("assets/css/main.css") ?>" rel="stylesheet">
+  <?php if (isset($_SESSION['admin'])) : ?>
+    <?php if ($_SESSION['admin']['theem'] == 'dark') : ?>
+      <link href="<?= url("assets/css/dark.css") ?>" rel="stylesheet">
+    <?php else : ?>
+      <link href="<?= url("assets/css/light.css") ?>" rel="stylesheet">
+    <?php endif; ?>
+  <?php endif; ?>
 </head>
 
 <body>
