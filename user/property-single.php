@@ -1,10 +1,24 @@
 <?php
 include_once '../admin/vendor/configDatabase.php';
+session_start();
 
-$select = "SELECT * FROM `joindataprop` WHERE propId = 3  ";
-$selectRow = mysqli_query($conn, $select);
-
-$row = mysqli_fetch_assoc($selectRow);
+$prob_id =  '';
+if (isset($_GET['view'])) {
+  $id = $_GET['view'];
+  $select = "SELECT * FROM `joindataprop` WHERE propId = $id  ";
+  $selectRow = mysqli_query($conn, $select);
+  $prob_id = $id;
+  $row = mysqli_fetch_assoc($selectRow);
+}
+if (isset($_POST['sendMessage'])) {
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $message = $_POST['message'];
+  $user_id = $_SESSION['userData']['id'];
+  
+  $insert =  "INSERT INTO messages values (null , '$message',$user_id,Default,'$name','$email',$prob_id)";
+  mysqli_query($conn, $insert);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -191,7 +205,7 @@ $row = mysqli_fetch_assoc($selectRow);
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">304 Blaster Up  <?= $row['title'] ?></h1>
+              <h1 class="title-single">304 Blaster Up <?= $row['title'] ?></h1>
               <span class="color-text-a">Chicago, IL 606543</span>
             </div>
           </div>
@@ -222,10 +236,11 @@ $row = mysqli_fetch_assoc($selectRow);
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper">
                 <div class="carousel-item-b swiper-slide">
-                  <img src="<?= $row['image_path']?>" alt="">
+                  <img src="<?= $row['image_path'] ?>" alt="">
                 </div>
                 <div class="carousel-item-b swiper-slide">
-                <img src="<?= $row['image_path']?>" alt="">                </div>
+                  <img src="<?= $row['image_path'] ?>" alt="">
+                </div>
               </div>
             </div>
             <div class="property-single-carousel-pagination carousel-pagination"></div>
@@ -374,11 +389,11 @@ $row = mysqli_fetch_assoc($selectRow);
             </div>
             <div class="row">
               <div class="col-md-6 col-lg-4">
-                <img src="../admin/app/agents/upload/<?= $row['AgemtImage']?>" alt="" class="img-fluid">
+                <img src="../admin/app/agents/upload/<?= $row['AgemtImage'] ?>" alt="" class="img-fluid">
               </div>
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">Anabella Geller</h4>
+                  <h4 class="title-agent"> <?= $row['AgentName'] ?> </h4>
                   <p class="color-text-a">
                     Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
                     dui. Quisque velit nisi,
@@ -430,25 +445,25 @@ $row = mysqli_fetch_assoc($selectRow);
               </div>
               <div class="col-md-12 col-lg-4">
                 <div class="property-contact">
-                  <form class="form-a">
+                  <form class="form-a" method="POST">
                     <div class="row">
                       <div class="col-md-12 mb-1">
                         <div class="form-group">
-                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+                          <input type="text" name="name" value="<?= $_SESSION['userData']['name'] ?>" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
                         </div>
                       </div>
                       <div class="col-md-12 mb-1">
                         <div class="form-group">
-                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                          <input type="email" name="email" value="<?= $_SESSION['userData']['email'] ?>" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
                         </div>
                       </div>
                       <div class="col-md-12 mb-1">
                         <div class="form-group">
-                          <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                          <textarea id="textMessage" name="message" class="form-control" placeholder="Comment *" cols="45" rows="8" required></textarea>
                         </div>
                       </div>
                       <div class="col-md-12 mt-3">
-                        <button type="submit" class="btn btn-a">Send Message</button>
+                        <button name="sendMessage" type="submit" class="btn btn-a">Send Message</button>
                       </div>
                     </div>
                   </form>

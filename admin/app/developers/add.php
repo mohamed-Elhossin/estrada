@@ -1,18 +1,19 @@
 <?php
 include_once '../../vendor/functions.php';
-  auth();
+auth(2);
 include_once '../../shared/head.php';
 include_once '../../shared/header.php';
 include_once '../../shared/aside.php';
 include_once '../../vendor/configDatabase.php';
+// Sec.
+// validation > Filter Function text > clean Text    ,  Boolean Function > return true or false
 
-
+$validation_Errors = [];
 if (isset($_POST['send'])) {
-    $name = $_POST['name'];
- 
+    $name =  filterValidation($_POST['name']);
+
     $insert = "INSERT INTO developers VALUES (null , '$name')";
     $mysqli_run = mysqli_query($conn, $insert);
- 
     redirect('developers/add.php');
     getMessage($mysqli_run, "Add Developer");
 }
@@ -36,13 +37,21 @@ clearSessionDone();
                     </form>
                 </div>
             <?php endif; ?>
-
+            <?php if (!empty($validation_Errors)) :  ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach ($validation_Errors as $error) : ?>
+                            <li><?= $error ?></li>
+                        <?php endforeach;  ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
             <!-- No LaclearSessionbels Form -->
             <form method="POST" class="row g-3">
                 <div class="col-md-12">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name">
+                    <input type="text" id="developerName" name="name" class="form-control" placeholder="Your Name">
                 </div>
-   
+
                 <div class="text-center">
                     <button type="submit" name="send" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
@@ -52,7 +61,6 @@ clearSessionDone();
         </div>
     </div>
 </div>
-
 <?php
 include_once "../../shared/footer.php";
 include_once '../../shared/script.php';

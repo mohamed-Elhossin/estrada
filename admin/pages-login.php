@@ -22,7 +22,8 @@ if (isset($_POST['login'])) {
       "email" => $email,
       "id" => $rowAllData['id'],
       "image" => $rowAllData['image'],
-      "theem" => $rowAllData['theem']
+      "theem" => $rowAllData['theem'],
+      "rule" => $rowAllData['rule'],
     ];
     header('location: /estrada/admin/index.php');
   } else {

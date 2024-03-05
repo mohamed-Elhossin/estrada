@@ -1,5 +1,5 @@
 <?php
-include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php'; 
+include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
 
 ?>
 
@@ -16,6 +16,8 @@ include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
         </li><!-- End Dashboard Nav -->
 
 
+        <?php
+        if ($_SESSION['admin']['rule'] == 1) :?>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Sources" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-layout-text-window-reverse"></i><span>Admins</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -33,6 +35,7 @@ include_once 'C:\xampp\htdocs\estrada\admin\vendor\functions.php';
                 </li>
             </ul>
         </li><!-- End Tables Nav -->
+        <?php endif; ?>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#category" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-layout-text-window-reverse"></i><span>developers</span><i class="bi bi-chevron-down ms-auto"></i>

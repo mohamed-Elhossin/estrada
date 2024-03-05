@@ -12,7 +12,7 @@ if (isset($_POST['send'])) {
     $email = $_POST['email'];
     $password =  $_POST['password'];
     $hash_password = sha1($password);
-    $insert = "INSERT INTO admins VALUES (null , '$name','$hash_password','$email',Default)";
+    $insert = "INSERT INTO admins VALUES (null , '$name','$hash_password','$email',Default ,Default)";
     $mysqli_run = mysqli_query($conn, $insert);
     // header("http://localhost/estrada/admin/app/admins/add.php");
     redirect('admins/add.php');
@@ -22,14 +22,13 @@ if (isset($_POST['send'])) {
 clearSessionDone();
 
 
+
 ?>
 
 <div class="container col-8">
     <div class="card">
         <div class="card-body">
-
             <h5 class="card-title">Create New Admin</h5>
-
             <?php if (isset($_SESSION['done'])) : ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?php echo $_SESSION['done']; ?>
@@ -38,7 +37,6 @@ clearSessionDone();
                     </form>
                 </div>
             <?php endif; ?>
-
             <!-- No LaclearSessionbels Form -->
             <form method="POST" class="row g-3">
                 <div class="col-md-12">
@@ -50,8 +48,6 @@ clearSessionDone();
                 <div class="col-md-6">
                     <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
- 
-      
                 <div class="text-center">
                     <button type="submit" name="send" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>

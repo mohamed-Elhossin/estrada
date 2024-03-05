@@ -4,14 +4,12 @@
   include_once './shared/head.php';
   include_once './shared/header.php';
   include_once './shared/aside.php';
-
-
   ?>
 
 
 
  <div class="pagetitle">
-   <h1>Dashboard <?php print_r($_SESSION) ?> </h1>
+   <h1>Dashboard </h1>
    <nav>
      <ol class="breadcrumb">
        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
